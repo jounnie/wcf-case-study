@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using DemoSqlServer;
 using WCFandEFService;
 
 
@@ -14,14 +15,11 @@ namespace ServiceClient
     {
         static void Main(string[] args)
         {
-            var endpointAddress = new EndpointAddress("http://localhost/WCFandEFService/ProductService");
+            var endpointAddress = new EndpointAddress("http://localhost:8733/WCFandEFService/ProductService");
            
             var proxy = ChannelFactory<IProductService>.CreateChannel(new BasicHttpBinding(), endpointAddress);
 
-            Product product=proxy.GetProduct(1);
-
-            string input = Console.ReadLine();
-
+            proxy.AddAlbumWithTracks();
         }
     }
 }

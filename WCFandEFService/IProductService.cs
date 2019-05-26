@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using DemoSqlServer;
 
 namespace WCFandEFService
 {
@@ -11,10 +12,28 @@ namespace WCFandEFService
     public interface IProductService
     {
         [OperationContract]
-        Product GetProduct(int id);
+        void AddAlbumWithTracks();
+
+        /*[OperationContract]
+        void DeleteAlbum(int id);
+
+        [OperationContract]
+        List<Album> FindAlbumsByTitle(String title);
+
+        [OperationContract]
+        List<Track> FindTracksByTitle(String title);
+
+        [OperationContract]
+        List<Album> FindAlbumsByInterpret(String interpret);
+
+        [OperationContract]
+        List<Track> FindBoughtTracksByClient(String client);
+
+        [OperationContract]
+        List<Invoice> FindInvoicesByClient(String client);*/
     }
 
-    [DataContract]
+    /*[DataContract]
     public class Product
     {
         [DataMember]
@@ -27,5 +46,5 @@ namespace WCFandEFService
         public decimal UnitPrice { get; set; }
         [DataMember]
         public bool Discontinued { get; set; }
-    }
+    }*/
 }

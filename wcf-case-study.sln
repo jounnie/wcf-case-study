@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFandEFService", "WCFandEFService\WCFandEFService.csproj", "{CDF31BDF-EE50-40D8-BFEB-33E5EDC2F7FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF", "EF\EF.csproj", "{7F31E541-6F1E-470B-B379-2C71B30C0AB3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{CDF31BDF-EE50-40D8-BFEB-33E5EDC2F7FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDF31BDF-EE50-40D8-BFEB-33E5EDC2F7FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDF31BDF-EE50-40D8-BFEB-33E5EDC2F7FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F31E541-6F1E-470B-B379-2C71B30C0AB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F31E541-6F1E-470B-B379-2C71B30C0AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F31E541-6F1E-470B-B379-2C71B30C0AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F31E541-6F1E-470B-B379-2C71B30C0AB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

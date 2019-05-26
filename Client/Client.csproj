@@ -55,6 +55,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EF\EF.csproj">
+      <Project>{7f31e541-6f1e-470b-b379-2c71b30c0ab3}</Project>
+      <Name>EF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WCFandEFService\WCFandEFService.csproj">
       <Project>{cdf31bdf-ee50-40d8-bfeb-33e5edc2f7fa}</Project>
       <Name>WCFandEFService</Name>

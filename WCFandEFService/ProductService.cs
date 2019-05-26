@@ -4,40 +4,54 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using DemoSqlServer;
 
 namespace WCFandEFService
 {
     public class ProductService : IProductService
     {
-        public Product GetProduct(int id)
+        public void AddAlbumWithTracks()
         {
-           
+            ChinookEntities context = new ChinookEntities();
+            var query = from p
+                    in context.Album.AsEnumerable()
+                select p;
+            var albums = query.ToArray();
 
-            NorthwindEntities context = new NorthwindEntities();
-            var productEntity = (from p
-                                in context.ProductEntities
-                                where p.ProductID == id
-                                select p).FirstOrDefault();
-
-            if (productEntity != null)
-                return TranslateProductEntityToProduct(productEntity);
-            else
-                throw new Exception("Invalid product id");
+            foreach (var album in albums)
+            {
+                Console.WriteLine(album.Title);
+            }
         }
 
-        private Product TranslateProductEntityToProduct(
-            ProductEntity productEntity)
+        public void DeleteAlbum(int id)
         {
-            Product product = new Product();
-
-            product.ProductID = productEntity.ProductID;
-            product.ProductName = productEntity.ProductName;
-            product.QuantityPerUnit = productEntity.QuantityPerUnit;
-            product.UnitPrice = (decimal)productEntity.UnitPrice;
-            product.Discontinued = productEntity.Discontinued;
-
-            return product;
+            throw new NotImplementedException();
         }
 
+        public List<Album> FindAlbumsByTitle(string title)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Track> FindTracksByTitle(string title)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Album> FindAlbumsByInterpret(string interpret)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Track> FindBoughtTracksByClient(string client)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Invoice> FindInvoicesByClient(string client)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
