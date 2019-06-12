@@ -10,11 +10,17 @@ namespace WCFandEFService
 {
     public class ProductService : IProductService
     {
+        private readonly ChinookEntities _context;
+
+        public ProductService()
+        {
+            _context = new ChinookEntities();
+        }
+
         public void AddAlbumWithTracks()
         {
-            ChinookEntities context = new ChinookEntities();
             var query = from p
-                    in context.Album.AsEnumerable()
+                    in _context.Album.AsEnumerable()
                 select p;
             var albums = query.ToArray();
 
@@ -29,9 +35,19 @@ namespace WCFandEFService
             throw new NotImplementedException();
         }
 
-        public List<Album> FindAlbumsByTitle(string title)
+        public List<AlbumDto> FindAlbumsByTitle(string title)
         {
-            throw new NotImplementedException();
+            var albums = _context.Album
+                .Where(album => album.Title.Contains(title))
+                .ToList();
+
+            var results = new List<AlbumDto>();
+            foreach (var album in albums)
+            {
+                results.Add(new AlbumDto {Title = album.Title});
+            }
+
+            return results;
         }
 
         public List<Track> FindTracksByTitle(string title)

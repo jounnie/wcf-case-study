@@ -14,7 +14,6 @@ namespace DemoSqlServer
     using System;
     using System.Collections.Generic;
     
-    [DataContract]
     public partial class Album
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,7 +23,6 @@ namespace DemoSqlServer
         }
     
         public int AlbumId { get; set; }
-        [DataMember]
         public string Title { get; set; }
         public int ArtistId { get; set; }
     

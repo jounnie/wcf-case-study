@@ -14,37 +14,31 @@ namespace WCFandEFService
         [OperationContract]
         void AddAlbumWithTracks();
 
-        /*[OperationContract]
+        //[OperationContract]
         void DeleteAlbum(int id);
 
         [OperationContract]
-        List<Album> FindAlbumsByTitle(String title);
+        List<AlbumDto> FindAlbumsByTitle(string title);
 
-        [OperationContract]
-        List<Track> FindTracksByTitle(String title);
+        //[OperationContract]
+        List<Track> FindTracksByTitle(string title);
 
-        [OperationContract]
-        List<Album> FindAlbumsByInterpret(String interpret);
+        //[OperationContract]
+        List<Album> FindAlbumsByInterpret(string interpret);
 
-        [OperationContract]
-        List<Track> FindBoughtTracksByClient(String client);
+        //[OperationContract]
+        List<Track> FindBoughtTracksByClient(string client);
 
-        [OperationContract]
-        List<Invoice> FindInvoicesByClient(String client);*/
+        //[OperationContract]
+        List<Invoice> FindInvoicesByClient(string client);
     }
 
-    /*[DataContract]
-    public class Product
+    [DataContract]
+    public class AlbumDto
     {
         [DataMember]
-        public int ProductID { get; set; }
-        [DataMember]
-        public string ProductName { get; set; }
-        [DataMember]
-        public string QuantityPerUnit { get; set; }
-        [DataMember]
-        public decimal UnitPrice { get; set; }
-        [DataMember]
-        public bool Discontinued { get; set; }
-    }*/
+        public string Title { get; set; }
+
+        public override string ToString() => $"{nameof(Title)}: {Title}";
+    }
 }

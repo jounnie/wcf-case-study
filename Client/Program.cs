@@ -19,7 +19,11 @@ namespace ServiceClient
            
             var proxy = ChannelFactory<IProductService>.CreateChannel(new BasicHttpBinding(), endpointAddress);
 
-            proxy.AddAlbumWithTracks();
+            List<AlbumDto> albums = proxy.FindAlbumsByTitle("Rock");
+            foreach (AlbumDto album in albums)
+            {
+                Console.WriteLine(album);
+            }
         }
     }
 }
