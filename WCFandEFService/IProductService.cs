@@ -26,8 +26,8 @@ namespace WCFandEFService
         [OperationContract]
         List<AlbumDto> FindAlbumsByInterpret(string interpret);
 
-        //[OperationContract]
-        List<Track> FindBoughtTracksByClient(string client);
+        [OperationContract]
+        List<TrackDto> FindBoughtTracksByClient(string client);
 
         //[OperationContract]
         List<Invoice> FindInvoicesByClient(string client);
