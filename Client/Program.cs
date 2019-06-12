@@ -23,6 +23,12 @@ namespace Client
             {
                 Console.WriteLine(track);
             }
+            
+            var albums2 = proxy.FindAlbumsByInterpret("AC/DC");
+            foreach (var album in albums2)
+            {
+                Console.WriteLine(album);
+            }
         }
     }
 }

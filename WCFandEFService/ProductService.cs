@@ -75,9 +75,13 @@ namespace WCFandEFService
             return results;
         }
 
-        public List<Album> FindAlbumsByInterpret(string interpret)
+        public List<AlbumDto> FindAlbumsByInterpret(string interpret)
         {
-            throw new NotImplementedException();
+            var albums = _context.Artist
+                .Include("Album")
+                .First(artist => artist.Name.Equals(interpret, StringComparison.OrdinalIgnoreCase));
+
+            return albums.Album.Select(album => new AlbumDto {Title = album.Title}).ToList();
         }
 
         public List<Track> FindBoughtTracksByClient(string client)

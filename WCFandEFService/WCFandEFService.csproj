@@ -126,6 +126,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Chinook.mdf</DependentUpon>
     </Content>
+    <Content Include="Chinook_Sqlite_AutoIncrementPKs.sqlite" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
