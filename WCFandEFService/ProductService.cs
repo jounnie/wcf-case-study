@@ -102,9 +102,35 @@ namespace WCFandEFService
             return results;
         }
 
-        public List<Invoice> FindInvoicesByClient(string client)
+        public List<InvoiceDto> FindInvoicesByClient(string client)
         {
-            throw new NotImplementedException();
+            DbSet<Invoice> contextInvoice = _context.Invoice;
+            DbSet<Customer> contextCustomer = _context.Customer;
+            
+            var query =
+                from invoice in contextInvoice
+                join customer in contextCustomer
+                    on invoice.CustomerId equals customer.CustomerId
+                where customer.LastName == client
+                select invoice;
+
+            var results = new List<InvoiceDto>();
+            foreach (var invoice in query)
+            {
+                results.Add(new InvoiceDto
+                {
+                    InvoiceId = invoice.InvoiceId,
+                    CustomerId = invoice.CustomerId,
+                    InvoiceDate = invoice.InvoiceDate,
+                    BillingAddress = invoice.BillingAddress,
+                    BillingCity = invoice.BillingCity,
+                    BillingState = invoice.BillingState,
+                    BillingCountry = invoice.BillingCountry,
+                    BillingPostalCode = invoice.BillingPostalCode,
+                    Total = invoice.Total
+                });
+            }
+            return results;
         }
 
         private static TrackDto TransformTo(Track track)

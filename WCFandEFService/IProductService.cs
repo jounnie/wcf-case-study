@@ -29,8 +29,8 @@ namespace WCFandEFService
         [OperationContract]
         List<TrackDto> FindBoughtTracksByClient(string client);
 
-        //[OperationContract]
-        List<Invoice> FindInvoicesByClient(string client);
+        [OperationContract]
+        List<InvoiceDto> FindInvoicesByClient(string client);
     }
 
     [DataContract]
@@ -67,6 +67,34 @@ namespace WCFandEFService
         public override string ToString()
         {
             return $"{nameof(TrackId)}: {TrackId}, {nameof(Name)}: {Name}, {nameof(AlbumId)}: {AlbumId}, {nameof(MediaTypeId)}: {MediaTypeId}, {nameof(GenreId)}: {GenreId}, {nameof(Composer)}: {Composer}, {nameof(Milliseconds)}: {Milliseconds}, {nameof(Bytes)}: {Bytes}, {nameof(UnitPrice)}: {UnitPrice}";
+        }
+    }
+    
+    [DataContract]
+    public class InvoiceDto
+    {
+        [DataMember]
+        public int InvoiceId { get; set; }
+        [DataMember]
+        public int CustomerId { get; set; }
+        [DataMember]
+        public System.DateTime InvoiceDate { get; set; }
+        [DataMember]
+        public string BillingAddress { get; set; }
+        [DataMember]
+        public string BillingCity { get; set; }
+        [DataMember]
+        public string BillingState { get; set; }
+        [DataMember]
+        public string BillingCountry { get; set; }
+        [DataMember]
+        public string BillingPostalCode { get; set; }
+        [DataMember]
+        public decimal Total { get; set; }
+
+        public override string ToString()
+        {
+            return $"{nameof(InvoiceId)}: {InvoiceId}, {nameof(CustomerId)}: {CustomerId}, {nameof(InvoiceDate)}: {InvoiceDate}, {nameof(BillingAddress)}: {BillingAddress}, {nameof(BillingCity)}: {BillingCity}, {nameof(BillingState)}: {BillingState}, {nameof(BillingCountry)}: {BillingCountry}, {nameof(BillingPostalCode)}: {BillingPostalCode}, {nameof(Total)}: {Total}";
         }
     }
 }

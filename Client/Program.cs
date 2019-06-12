@@ -39,6 +39,13 @@ namespace Client
             {
                 Console.WriteLine(track);
             }
+            
+            Console.WriteLine("### FindInvoicesByClient Leacock\n");
+            var invoices = proxy.FindInvoicesByClient("Leacock");
+            foreach (var invoice in invoices)
+            {
+                Console.WriteLine(invoice);
+            }
         }
     }
 }
