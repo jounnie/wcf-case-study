@@ -50,9 +50,29 @@ namespace WCFandEFService
             return results;
         }
 
-        public List<Track> FindTracksByTitle(string title)
+        public List<TrackDto> FindTracksByTitle(string title)
         {
-            throw new NotImplementedException();
+            var tracks = _context.Track
+                .Where(track => track.Name.Contains(title))
+                .ToList();
+
+            var results = new List<TrackDto>();
+            foreach (var track in tracks)
+            {
+                results.Add(new TrackDto {
+                    TrackId = track.TrackId, 
+                    Name = track.Name,
+                    AlbumId = track.AlbumId,
+                    MediaTypeId = track.MediaTypeId,
+                    GenreId = track.GenreId,
+                    Composer = track.Composer,
+                    Milliseconds = track.Milliseconds,
+                    Bytes = track.Bytes,
+                    UnitPrice = track.UnitPrice
+                });
+            }
+
+            return results;
         }
 
         public List<Album> FindAlbumsByInterpret(string interpret)

@@ -121,6 +121,7 @@
     <Content Include="Chinook.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="ChinookDatabaseSchema1.1.png" />
     <Content Include="Chinook_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Chinook.mdf</DependentUpon>
