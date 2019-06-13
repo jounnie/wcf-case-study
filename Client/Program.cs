@@ -46,6 +46,13 @@ namespace Client
             {
                 Console.WriteLine(invoice);
             }
+
+            Console.WriteLine("### FindInvoicesByClient Leacock\n");
+            Console.WriteLine(proxy.DeleteAlbum(1));
+            
+            
+            Console.WriteLine("### FindInvoicesByClient Leacock\n");
+            proxy.AddAlbumWithTracks();
         }
     }
 }

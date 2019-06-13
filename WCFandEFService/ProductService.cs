@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -16,24 +17,41 @@ namespace WCFandEFService
         public ProductService()
         {
             _context = new ChinookEntities();
+            _context.Database.Log = sql => Debug.Write(sql);
         }
 
         public void AddAlbumWithTracks()
         {
-            var query = from p
-                    in _context.Album.AsEnumerable()
-                select p;
-            var albums = query.ToArray();
+            Artist newArtist = new Artist();
+            newArtist.Name = "Rammstein";
+            
+            Album newAlbum = new Album();
+            newAlbum.Title = "RAMMSTEIN";
+            newAlbum.Artist = newArtist;
+            
+            Track t1 = new Track();
+            t1.Album = newAlbum;
+            t1.Name = "DEUTSCHLAND";
+            t1.MediaTypeId = 1;
+            t1.Milliseconds = 42;
+            t1.UnitPrice = new decimal(5.5);
 
-            foreach (var album in albums)
-            {
-                Console.WriteLine(album.Title);
-            }
+            var persisted = _context.Track.Add(t1);
+            _context.SaveChanges();
+            Console.WriteLine(persisted);
         }
 
-        public void DeleteAlbum(int id)
+        public int DeleteAlbum(int id)
         {
-            throw new NotImplementedException();
+            var album = _context.Album.Find(id);
+
+            if (album == null)
+            {
+                return 0;
+            }
+
+            _context.Album.Remove(album);
+            return _context.SaveChanges();
         }
 
         public List<AlbumDto> FindAlbumsByTitle(string title)
@@ -106,7 +124,7 @@ namespace WCFandEFService
         {
             DbSet<Invoice> contextInvoice = _context.Invoice;
             DbSet<Customer> contextCustomer = _context.Customer;
-            
+
             var query =
                 from invoice in contextInvoice
                 join customer in contextCustomer
@@ -130,13 +148,15 @@ namespace WCFandEFService
                     Total = invoice.Total
                 });
             }
+
             return results;
         }
 
         private static TrackDto TransformTo(Track track)
         {
-            return new TrackDto {
-                TrackId = track.TrackId, 
+            return new TrackDto
+            {
+                TrackId = track.TrackId,
                 Name = track.Name,
                 AlbumId = track.AlbumId,
                 MediaTypeId = track.MediaTypeId,
